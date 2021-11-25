@@ -11,10 +11,21 @@ var runSearch = function () {
         .then(function(response) {
             return response.json();
         })
+        .then(function(data) {
+            var lon = data.lon;
+            var lat = data.lat;
+            var requestUrlRadius = "https://api.opentripmap.com/0.1/en/places/radius?radius=8041&lon=" + lon + "&lat=" + lat + "&format=json&apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
+            fetch(requestUrlRadius)
+                .then(function(response) {
+                    return response.json();
+                })
+            
+            console.log(requestUrlRadius);
+            console.log(requestUrl);
+    
         
-        console.log(requestUrl);
-        
-        
+        })
+    
 
     // create a search history under the search bar BELOW:
     // var listItemLocation = document.createElement('h4');
