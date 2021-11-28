@@ -1,20 +1,20 @@
 #banner-img img {
     width: 2560px;
 }
+#banner-img2 img {
+    width: 2560px;
+    height: 500px;
+}
 button {
     margin: 5px;
 }
-/* .row {
-    width: 80%;
-} */
+#second-side img {
+    width: 250px;
+}
+
 /*media queries*/
-/* @media only screen and (min-width: 601px) {
-    .container {
-      width: 85%;
+@media screen and (max-width: 650px) {
+    #banner-img2 img {
+        height: 200px;
     }
   }
-  @media only screen and (min-width: 993px) {
-    .container {
-      width: 70%;
-    }
-  } */

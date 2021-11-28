@@ -16,7 +16,7 @@
 
     <title>Concierge</title>
     <!--favicon-->
-<link rel="shortcut icon" type="image/png" href="./assets/images/bell1.png"/>
+    <link rel="shortcut icon" type="image/png" href="./assets/images/bell1.png" />
 
 </head>
 
@@ -25,13 +25,12 @@
         <!--navigation-->
         <nav>
             <div class="nav-wrapper blue-grey darken-4">
-              <a href="#!" class="brand-logo"><i class="material-icons">room_service</i>Concierge</a>
-              <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-              <ul class="right hide-on-med-and-down">
-                <li><a data-target="slide-out" class="waves-effect waves-light"><i class="material-icons">view_module</i></a></li>
-              </ul>
+                <a href="#!" class="brand-logo"><i class="material-icons">room_service</i>Concierge</a>
+                <a href="#" data-target="slide-out"
+                    class="sidenav-trigger show-on-large right waves-effect waves-light"><i
+                        class="material-icons">menu</i></a>
             </div>
-          </nav>
+        </nav>
         <!--hero-->
         <div id="banner-img"><img class="responsive-img" src="./assets/images/concierge-services-banner.jpg" /></div>
     </header>
@@ -46,8 +45,9 @@
                         <div class="card-action">
                             <form id="user-form" class="input-field">
                                 <input name="location" id="locale" type="text" autofocus="true"
-                                    class="form-input col s4 grey-text" placeholder="Search By City & State" />
-                                <button class="btn-large col s4 indigo lighten-4 right"><i
+                                    class="form-input col s12 m4 l4 xl4 grey-text"
+                                    placeholder="Search By City & State" />
+                                <button class="btn-large col s12 m4 l4 xl4 indigo lighten-4 right"><i
                                         class="medium material-icons right">search</i>Submit</button>
                         </div>
                     </div>
@@ -55,45 +55,13 @@
             </div>
         </div>
         <!--saved location side menu-->
-        <!-- <div class="sidemenu" hidden>
-            <div class="sidemenu-hero fade">
-                <img class="avatar" src="./assets/images/concierge-desk1.jpg" />
-                <img class="sidemenu-hero-image" src="./assets/images/check-in2.jpg" />
-                <span class="title"><i class="small material-icons left">add_location_alt</i> Saved Locations</span>
-            </div>
-            <ul class="menu">
-
-            </ul>
-        </div> -->
-
-        <!-- <ul id="slide-out" class="sidenav">
-            <li>
-                <div class="user-view">
-                    <div class="background">
-                        <img src="./assets/images/concierge-desk1.jpg">
-            </li>
-            <li><img class="circle" src="./assets/images/check-in2.jpg"></li>
+        <ul id="slide-out" class="sidenav">
+            <li id="second-side"><img class="circle" src="./assets/images/check-in2.jpg"></li>
             <li><i class="material-icons left">add_location_alt</i>Saved locations</li>
             <li>
                 <div class="divider"></div>
             </li>
-        </ul> -->
-
-        <ul id="slide-out" class="sidenav">
-            <li><div class="user-view">
-              <div class="background">
-                <img src="images/office.jpg">
-              </div>
-              <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-              <a href="#name"><span class="white-text name">John Doe</span></a>
-              <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-            </div></li>
-            <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-            <li><a href="#!">Second Link</a></li>
-            <li><div class="divider"></div></li>
-            <li><a class="subheader">Subheader</a></li>
-            <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-          </ul>
+        </ul>
     </main>
     <!--materize js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
