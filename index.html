@@ -10,7 +10,7 @@
     <!--materialize style-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--added material by Tim Nguyen if wanting to use side menu idea-->
-    <link rel="stylesheet" href="./assets/css/material.css" />
+    <!-- <link rel="stylesheet" href="./assets/css/material.css" /> -->
     <!--custom style sheet-->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
@@ -18,22 +18,26 @@
 </head>
 
 <body>
-    <main>
+    <header>
         <!--navigation-->
         <nav>
             <div class="nav-wrapper blue-grey darken-4">
                 <a href="#!" class="brand-logo"><i class="material-icons">room_service</i>Concierge</a>
-                <ul class="right hide-on-med-and-down">
-                    <li id="side-menu"><a class="waves-effect waves-light btn-flat"><i
+                <!-- <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+                <ul id="nav-mobile" class="right show-med-and-up">
+                    <li id="save-menu-btn"><a data-target="slide-out" class="waves-effect waves-light btn-flat white sidenav-trigger"><i
                                 class="material-icons">menu</i></a></li>
                 </ul>
             </div>
         </nav>
+
         <!--hero-->
-        <div><img class="responsive-img" src="./assets/images/concierge-services-banner.jpg" /></div>
+        <div><img id="banner-img" class="responsive-img" src="./assets/images/concierge-services-banner.jpg" /></div>
+    </header>
+    <main>
         <div class="container">
             <div class="row">
-                <div class="col s12 z-depth-4 indigo lighten-4 card">
+                <div class="col s12 z-depth-4 light-blue darken-4 card">
                     <div class="card-content">
                         <div>
                             <span class="card-title center-align white-text">Search area starter page</span>
@@ -41,8 +45,8 @@
                         <div class="card-action">
                             <form id="user-form" class="input-field">
                                 <input name="location" id="locale" type="text" autofocus="true"
-                                    class="form-input col s6 grey-text" placeholder="Search By City & State" />
-                                <button class="btn-large col s6 light-blue darken-4"><i
+                                    class="form-input col s4 grey-text" placeholder="Search By City & State" />
+                                <button class="btn-large col s4 indigo lighten-4 right"><i
                                         class="medium material-icons right">search</i>Submit</button>
                         </div>
                     </div>
@@ -50,7 +54,7 @@
             </div>
         </div>
         <!--saved location side menu-->
-        <div class="sidemenu" hidden>
+        <!-- <div class="sidemenu" hidden>
             <div class="sidemenu-hero fade">
                 <img class="avatar" src="./assets/images/concierge-desk1.jpg" />
                 <img class="sidemenu-hero-image" src="./assets/images/check-in2.jpg" />
@@ -59,10 +63,23 @@
             <ul class="menu">
 
             </ul>
+        </div> -->
+
+        <div>
+            <ul id="slide-out" class="sidenav">
+                <li><div class="user-view">
+                  <div class="background">
+                    <img src="./assets/images/concierge-desk1.jpg"></li>
+                <li><img class="circle" src="./assets/images/check-in2.jpg"></li>
+                <li><i class="material-icons left">add_location_alt</i>Saved locations</li>
+                <li><div class="divider"></div></li>
+              </ul>
         </div>
     </main>
     <!--materize js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery.js"></script>
     <!--custom js-->
     <script src="./assets/javascript/JavaScript.js"></script>
 </body>
