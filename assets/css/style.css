@@ -1,4 +1,6 @@
-
+#banner-img img {
+    width: 2560px;
+}
 button {
     margin: 5px;
 }
