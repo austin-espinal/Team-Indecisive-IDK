@@ -1,0 +1,24 @@
+#banner-img img {
+    width: 2560px;
+    height: 500px;
+}
+#banner-img2 img {
+    width: 2560px;
+    height: 500px;
+}
+button {
+    margin: 5px;
+}
+#second-side img {
+    width: 250px;
+}
+
+/*media queries*/
+@media screen and (max-width: 650px) {
+    #banner-img img {
+        height: 300px;
+    }
+    #banner-img2 img {
+        height: 200px;
+    }
+}
