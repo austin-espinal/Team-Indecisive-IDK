@@ -1,29 +1,83 @@
 var runSearch = function () {
-    var locationRequested = document.getElementById("locale").value;
-    // to keep all the request organized in the console 
-    console.log(locationRequested);
-    var requestUrl = "https://api.opentripmap.com/0.1/en/places/geoname?name=" + locationRequested + "&apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
+    console.log("itworks");
+    // clearInfo();
+    var locationRequested = document.getElementById("cityInput").value;
+    var searchInfoArea = document.getElementById("search-city");
+    searchInfoArea.textContent = "City: " + locationRequested;
 
+    // get data from API
+    var requestUrl =
+        "https://api.opentripmap.com/0.1/en/places/geoname?name=" +
+        locationRequested +
+        "&apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
     fetch(requestUrl)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function (data) {
             var lon = data.lon;
             var lat = data.lat;
             // In the future we can add more "kinds" (filters) to get other data such as "natural" and "tourist facilities" (tourist_facilities%2Cnatural%2C)
-            var requestUrlRadius = "https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=" + lon + "&lat=" + lat + "&kinds=cultural%2Camusements&rate=1&format=json&apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
+            var requestUrlRadius =
+                "https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=" +
+                lon +
+                "&lat=" +
+                lat +
+                "&kinds=cultural%2Camusements&rate=2&format=json&limit=8&apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
             fetch(requestUrlRadius)
-                .then(function(response) {
+                .then(function (response) {
                     return response.json();
                 })
-            // to be able to see links in console and have visibility to what information we can access for further development
-            console.log(requestUrlRadius);
-        })
-    // convert distance from meters to miles
-    // var distance = data.dist * 0.00062137
-}
-$("#search-button").on("click", runSearch);
+                .then(function (data) {
+                    // loop to cycle through the data information
+                    for (var i = 0; i < data.length; i++) {
+                        var xid =
+                            "https://api.opentripmap.com/0.1/en/places/xid/" +
+                            data[i].xid +
+                            "?apikey=5ae2e3f221c38a28845f05b646d21e5f2e56e0429c8c0d446cc8bae6";
+                        // console.log(xid);
+                        fetch(xid)
+                            .then(function (response) {
+                                return response.json();
+                            })
+                            .then(function (data) {
+                                // to have visibility to data available for each location
+                                console.log(data);
+                                // get area where results are going to be displayed
+                                var results = document.getElementById("results");
+                                var categoryUl = document.createElement("ul");
+                                results.appendChild(categoryUl);
+                                var listItemName = document.createElement("h5");
+                                listItemName.textContent = data.name;
+                                categoryUl.appendChild(listItemName);
+                                var description = document.createElement("p");
+                                description.textContent = data.wikipedia_extracts.text;
+                                categoryUl.appendChild(description);
+                                console.log(description);
+                                var mapLink = document.createElement("a");
+                                mapLink.href = data.otm;
+                                mapLink.textContent =
+                                    "Click here for more details and map directions";
+                                categoryUl.appendChild(mapLink);
+                            });
+                    }
+                    // to be able to see links in console and have visibility to what information we can access for further development
+                    console.log(requestUrl);
+                    console.log(requestUrlRadius);
+                    console.log(xid);
+                });
+        });
+};
+// clears the search bar after searching and deletes information for prior search
+var clearInfo = function () {
+    var clearSearchInfo = document.getElementById("search-city");
+    var clearResults = document.getElementById("results");
+    clearSearchInfo.textContent = "";
+    clearResults.textContent = "";
+};
+$("#citySearchBtn").on("click", runSearch);
+
+
 
 //Side menu initialized
 const sideNav = document.querySelector('.sidenav');
@@ -43,29 +97,29 @@ initWeather();
 
 
 // This function displays the city entered by the user into the DOM
-function renderCities(){
+function renderCities() {
     $("#cityList").empty();
     $("#cityInput").val("");
-    
-    for (i=0; i<cityList.length; i++){
+
+    for (i = 0; i < cityList.length; i++) {
         var a = $("<a>");
         a.addClass("list-group-item list-group-item-action list-group-item-primary city");
         a.attr("data-name", cityList[i]);
         a.text(cityList[i]);
         $("#cityList").prepend(a);
-    } 
+    }
 }
 
 // This function pulls the city list array from local storage
 function initCityList() {
     var storedCities = JSON.parse(localStorage.getItem("cities"));
-    
+
     if (storedCities !== null) {
         cityList = storedCities;
     }
-    
+
     renderCities();
-    }
+}
 
 // This function pull the current city into local storage to display the current weather forecast on reload
 function initWeather() {
@@ -82,29 +136,29 @@ function initWeather() {
 // This function saves the city array to local storage
 function storeCityArray() {
     localStorage.setItem("cities", JSON.stringify(cityList));
-    }
+}
 
 // This function saves the currently display city to local storage
 function storeCurrentCity() {
 
     localStorage.setItem("currentCity", JSON.stringify(cityname));
 }
-      
+
 
 // Click event handler for city search button
-$("#citySearchBtn").on("click", function(event){
+$("#citySearchBtn").on("click", function (event) {
     event.preventDefault();
 
     cityname = $("#cityInput").val().trim();
-    if(cityname === ""){
+    if (cityname === "") {
         alert("Please enter a city to look up")
 
-    }else if (cityList.length >= 5){  
+    } else if (cityList.length >= 5) {
         cityList.shift();
         cityList.push(cityname);
 
-    }else{
-    cityList.push(cityname);
+    } else {
+        cityList.push(cityname);
     }
     storeCurrentCity();
     storeCityArray();
@@ -114,8 +168,8 @@ $("#citySearchBtn").on("click", function(event){
 });
 
 // Event handler for if the user hits enter after entering the city search term
-$("#cityInput").keypress(function(e){
-    if(e.which == 13){
+$("#cityInput").keypress(function (e) {
+    if (e.which == 13) {
         $("#citySearchBtn").click();
     }
 })
@@ -128,116 +182,116 @@ async function displayWeather() {
     var response = await $.ajax({
         url: queryURL,
         method: "GET"
-      })
-        console.log(response);
+    })
+    console.log(response);
 
-        var currentWeatherDiv = $("<div class='card-body' id='currentWeather'>");
-        var getCurrentCity = response.name;
-        var date = new Date();
-        var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
-        var getCurrentWeatherIcon = response.weather[0].icon;
-
-
-
-        var displayCurrentWeatherIcon = $("<img src = http://openweathermap.org/img/wn/" + getCurrentWeatherIcon + "@2x.png />");
-        var currentCityEl = $("<h3 class = 'card-body'>").text(getCurrentCity+" ("+val+")");
+    var currentWeatherDiv = $("<div class='card-body' id='currentWeather'>");
+    var getCurrentCity = response.name;
+    var date = new Date();
+    var val = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    var getCurrentWeatherIcon = response.weather[0].icon;
 
 
 
-        currentCityEl.append(displayCurrentWeatherIcon);
-        currentWeatherDiv.append(currentCityEl);
-        var getTemp = response.main.temp.toFixed(1);
-        var tempEl = $("<p class='card-text'>").text("Temperature: "+getTemp+"° F");
-        currentWeatherDiv.append(tempEl);
+    var displayCurrentWeatherIcon = $("<img src = http://openweathermap.org/img/wn/" + getCurrentWeatherIcon + "@2x.png />");
+    var currentCityEl = $("<h3 class = 'card-body'>").text(getCurrentCity + " (" + val + ")");
 
 
-        var getHumidity = response.main.humidity;
-        var humidityEl = $("<p class='card-text'>").text("Humidity: "+getHumidity+"%");
-        currentWeatherDiv.append(humidityEl);
+
+    currentCityEl.append(displayCurrentWeatherIcon);
+    currentWeatherDiv.append(currentCityEl);
+    var getTemp = response.main.temp.toFixed(1);
+    var tempEl = $("<p class='card-text'>").text("Temperature: " + getTemp + "° F");
+    currentWeatherDiv.append(tempEl);
 
 
-        var getWindSpeed = response.wind.speed.toFixed(1);
-        var windSpeedEl = $("<p class='card-text'>").text("Wind Speed: "+getWindSpeed+" mph");
-        currentWeatherDiv.append(windSpeedEl);
+    var getHumidity = response.main.humidity;
+    var humidityEl = $("<p class='card-text'>").text("Humidity: " + getHumidity + "%");
+    currentWeatherDiv.append(humidityEl);
 
-        
-        var getLong = response.coord.lon;
-        var getLat = response.coord.lat;
-        
-        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=d3b85d453bf90d469c82e650a0a3da26&lat="+getLat+"&lon="+getLong;
-        var uvResponse = await $.ajax({
-            url: uvURL,
-            method: "GET"
-        })
 
-        // getting UV Index info and setting color class according to value
-        var getUVIndex = uvResponse.value;
-        var uvNumber = $("<span>");
-        if (getUVIndex > 0 && getUVIndex <= 2.99){
-            uvNumber.addClass("low");
-        }else if(getUVIndex >= 3 && getUVIndex <= 5.99){
-            uvNumber.addClass("moderate");
-        }else if(getUVIndex >= 6 && getUVIndex <= 7.99){
-            uvNumber.addClass("high");
-        }else if(getUVIndex >= 8 && getUVIndex <= 10.99){
-            uvNumber.addClass("vhigh");
-        }else{
-            uvNumber.addClass("extreme");
-        } 
-        uvNumber.text(getUVIndex);
-        var uvIndexEl = $("<p class='card-text'>").text("UV Index: ");
-        uvNumber.appendTo(uvIndexEl);
-        currentWeatherDiv.append(uvIndexEl);
-        $("#weatherContainer").html(currentWeatherDiv);
+    var getWindSpeed = response.wind.speed.toFixed(1);
+    var windSpeedEl = $("<p class='card-text'>").text("Wind Speed: " + getWindSpeed + " mph");
+    currentWeatherDiv.append(windSpeedEl);
+
+
+    var getLong = response.coord.lon;
+    var getLat = response.coord.lat;
+
+    var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=d3b85d453bf90d469c82e650a0a3da26&lat=" + getLat + "&lon=" + getLong;
+    var uvResponse = await $.ajax({
+        url: uvURL,
+        method: "GET"
+    })
+
+    // getting UV Index info and setting color class according to value
+    var getUVIndex = uvResponse.value;
+    var uvNumber = $("<span>");
+    if (getUVIndex > 0 && getUVIndex <= 2.99) {
+        uvNumber.addClass("low");
+    } else if (getUVIndex >= 3 && getUVIndex <= 5.99) {
+        uvNumber.addClass("moderate");
+    } else if (getUVIndex >= 6 && getUVIndex <= 7.99) {
+        uvNumber.addClass("high");
+    } else if (getUVIndex >= 8 && getUVIndex <= 10.99) {
+        uvNumber.addClass("vhigh");
+    } else {
+        uvNumber.addClass("extreme");
+    }
+    uvNumber.text(getUVIndex);
+    var uvIndexEl = $("<p class='card-text'>").text("UV Index: ");
+    uvNumber.appendTo(uvIndexEl);
+    currentWeatherDiv.append(uvIndexEl);
+    $("#weatherContainer").html(currentWeatherDiv);
 }
 
 // This function runs the AJAX call for the 5 day forecast and displays them to the DOM
 async function displayFiveDayForecast() {
 
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityname+"&units=imperial&appid=d3b85d453bf90d469c82e650a0a3da26";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&units=imperial&appid=d3b85d453bf90d469c82e650a0a3da26";
 
     var response = await $.ajax({
         url: queryURL,
         method: "GET"
-      })
-      var forecastDiv = $("<div  id='fiveDayForecast'>");
-      var forecastHeader = $("<h5 class='card-header border-secondary'>").text("5 Day Forecast");
-      forecastDiv.append(forecastHeader);
-      var cardDeck = $("<div  class='card-deck'>");
-      forecastDiv.append(cardDeck);
-      
-      console.log(response);
-      for (i=0; i<5;i++){
-          var forecastCard = $("<div class='card mb-3 mt-3'>");
-          var cardBody = $("<div class='card-body'>");
-          var date = new Date();
-          var val=(date.getMonth()+1)+"/"+(date.getDate()+i+1)+"/"+date.getFullYear();
-          var forecastDate = $("<h5 class='card-title'>").text(val);
-          
+    })
+    var forecastDiv = $("<div  id='fiveDayForecast'>");
+    var forecastHeader = $("<h5 class='card-header border-secondary'>").text("5 Day Forecast");
+    forecastDiv.append(forecastHeader);
+    var cardDeck = $("<div  class='card-deck'>");
+    forecastDiv.append(cardDeck);
+
+    console.log(response);
+    for (i = 0; i < 5; i++) {
+        var forecastCard = $("<div class='card mb-3 mt-3'>");
+        var cardBody = $("<div class='card-body'>");
+        var date = new Date();
+        var val = (date.getMonth() + 1) + "/" + (date.getDate() + i + 1) + "/" + date.getFullYear();
+        var forecastDate = $("<h5 class='card-title'>").text(val);
+
         cardBody.append(forecastDate);
         var getCurrentWeatherIcon = response.list[i].weather[0].icon;
         console.log(getCurrentWeatherIcon);
         var displayWeatherIcon = $("<img src = http://openweathermap.org/img/wn/" + getCurrentWeatherIcon + ".png />");
         cardBody.append(displayWeatherIcon);
         var getTemp = response.list[i].main.temp;
-        var tempEl = $("<p class='card-text'>").text("Temp: "+getTemp+"° F");
+        var tempEl = $("<p class='card-text'>").text("Temp: " + getTemp + "° F");
         cardBody.append(tempEl);
         var getHumidity = response.list[i].main.humidity;
-        var humidityEl = $("<p class='card-text'>").text("Humidity: "+getHumidity+"%");
+        var humidityEl = $("<p class='card-text'>").text("Humidity: " + getHumidity + "%");
         cardBody.append(humidityEl);
         forecastCard.append(cardBody);
         cardDeck.append(forecastCard);
-      }
-      $("#forecastContainer").html(forecastDiv);
     }
+    $("#forecastContainer").html(forecastDiv);
+}
 
 // This function is used to pass the city in the history list to the displayWeather function
-function historyDisplayWeather(){
+function historyDisplayWeather() {
     cityname = $(this).attr("data-name");
     displayWeather();
     displayFiveDayForecast();
     console.log(cityname);
-    
+
 }
 
 $(document).on("click", ".city", historyDisplayWeather);
