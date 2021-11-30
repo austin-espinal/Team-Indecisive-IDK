@@ -26,3 +26,39 @@ button {
         height: 200px;
     }
 }
+.slider .slides li .caption {
+    top: 60%;
+}
+
+.text-input:not(:focus) {
+	border-bottom-color: rgba(41, 94, 115, 0.12) !important;}
+
+.color-iceberg-Navy { color: #011526; }
+.bg-iceberg-Navy { background-color: #011526; }
+.border-iceberg-Navy { border-color: #011526; }
+.fill-iceberg-Navy { fill: #011526; }
+.stroke-iceberg-Navy { stroke: #011526; }
+
+.color-iceberg-blue-grey { color: #9FB3BF; }
+.bg-iceberg-blue-grey { background-color: #9FB3BF; }
+.border-iceberg-blue-grey { border-color: #9FB3BF; }
+.fill-iceberg-blue-grey { fill: #9FB3BF; }
+.stroke-iceberg-blue-grey { stroke: #9FB3BF; }
+
+.color-iceberg-teal-grey { color: #295E73; }
+.bg-iceberg-teal-grey { background-color: #295E73; }
+.border-iceberg-teal-grey { border-color: #295E73; }
+.fill-iceberg-teal-grey { fill: #295E73; }
+.stroke-iceberg-teal-grey { stroke: #295E73; }
+
+.color-iceberg-grey { color: #6C838C; }
+.bg-iceberg-grey { background-color: #6C838C; }
+.border-iceberg-grey { border-color: #6C838C; }
+.fill-iceberg-grey { fill: #6C838C; }
+.stroke-iceberg-grey { stroke: #6C838C; }
+
+.color-iceberg-light-blue  { color: #BFD1D9; }
+.bg-iceberg-light-blue { background-color: #BFD1D9; }
+.border-iceberg-light-blue { border-color: #BFD1D9; }
+.fill-iceberg-light-blue   { fill: #BFD1D9; }
+.stroke-iceberg-light-blue { stroke: #BFD1D9; }
