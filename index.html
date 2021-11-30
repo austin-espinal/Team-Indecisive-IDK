@@ -10,14 +10,11 @@
     <!--materialize style-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--added material by Tim Nguyen if wanting to use side menu idea-->
-    <!-- <link rel="stylesheet" href="./assets/css/material.css" /> -->
+    <link rel="stylesheet" href="./assets/css/material.css" />
     <!--custom style sheet-->
     <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Concierge</title>
-    <!--favicon-->
-    <link rel="shortcut icon" type="image/png" href="./assets/images/bell1.png" />
-
 </head>
 
 <body>
@@ -43,11 +40,10 @@
                             <span class="card-title center-align white-text">Search area starter page</span>
                         </div>
                         <div class="card-action">
-                            <form id="user-form" class="input-field">
+                            <div id="user-form">
                                 <input name="location" id="locale" type="text" autofocus="true"
-                                    class="form-input col s12 m4 l4 xl4 white-text"
-                                    placeholder="Search By City & State" />
-                                <button class="btn-large col s12 m4 l4 xl4 bg-iceberg-teal-grey lighten-4 right"><i
+                                    class="form-input col s6" placeholder="Search By City & State" />
+                                <button class="btn-large col s6" id = "search-button"><i
                                         class="medium material-icons right">search</i>Submit</button>
                         </div>
                     </div>
@@ -93,16 +89,19 @@
         </div>
         </div>
         <!--saved location side menu-->
-        <ul id="slide-out" class="sidenav">
-            <li id="second-side"><img class="circle" src="./assets/images/check-in2.jpg"></li>
-            <li><i class="material-icons left">add_location_alt</i>Saved locations</li>
-            <li>
-                <div class="divider"></div>
-            </li>
-        </ul>
+        <!-- <div class="sidemenu">
+            <div class="sidemenu-hero fade">
+                <img class="avatar" src="" />
+                <img class="sidemenu-hero-image" src="" />
+                <span class="title"><i class="small material-icons left">add_location_alt</i> Saved Locations</span>
+            </div>
+            <ul class="menu">
+
+            </ul>
+        </div> -->
     </main>
-    <!--Jquery-->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!--materize js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--custom js-->
