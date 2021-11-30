@@ -24,6 +24,11 @@ var runSearch = function () {
     // var distance = data.dist * 0.00062137
 }
 $("#search-button").on("click", runSearch);
+
+//Side menu initialized
+const sideNav = document.querySelector('.sidenav');
+M.Sidenav.init(sideNav, {});
+
 //picture slider
 $('.slider').slider();
 
