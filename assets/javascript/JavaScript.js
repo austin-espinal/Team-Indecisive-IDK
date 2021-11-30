@@ -1,7 +1,7 @@
 var runSearch = function () {
   console.log("itworks");
   // clearInfo();
-  var locationRequested = document.getElementById("locale").value;
+  var locationRequested = document.getElementById("cityInput").value;
   var searchInfoArea = document.getElementById("search-city");
   searchInfoArea.textContent = "City: " + locationRequested;
 
@@ -75,7 +75,7 @@ var clearInfo = function () {
   clearSearchInfo.textContent = "";
   clearResults.textContent = "";
 };
-$("#search-button").on("click", runSearch);
+$("#citySearchBtn").on("click", runSearch);
 
 
 
@@ -294,4 +294,4 @@ function historyDisplayWeather(){
     
 }
 
-$(document).on("click", ".city", historyDisplayWeather);
+// $(document).on("click", ".city", historyDisplayWeather);
