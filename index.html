@@ -39,37 +39,33 @@
         <div id="banner-img"><img class="responsive-img" src="./assets/images/concierge-services-banner.jpg" /></div>
     </header>
     <main>
-        <div class="container">
+        <div class="container" id = "entireInformation">
             <div class="row">
                 <div class="col s12 z-depth-4 bg-iceberg-grey darken-4 card">
                     <div class="card-content">
                         <div>
-                            <span class="card-title center-align white-text">Search area starter page</span>
+                            <span class="card-title center-align white-text">Welcome to Concierge</span>
                         </div>
                         <div class="card-action">
-                            <form id="user-form" class="input-field">
+                            <div id="user-form" class="input-field">
                                 <input name="location" id="cityInput" type="text" autofocus="true"
                                     class="form-input col s12 m3 l3 xl3 white-text"
                                     placeholder="Search By City & State" />
-                                <button class="btn-large col s12 m4 l4 xl4 bg-iceberg-teal-grey lighten-4 right"
-                                    id="citySearchBtn"><i class="medium material-icons right">search</i>Get
-                                    Weather</button>
-                                <button class="btn-large col s12 m4 l4 xl4 bg-iceberg-teal-grey lighten-4 right"
-                                    id="citySearchBtn"><i class="medium material-icons right">search</i>Submit</button>
+                                <button class="btn-large col s12 m4 l4 xl4 bg-iceberg-teal-grey lighten-4 right" id="citySearchBtn"><i
+                                        class="medium material-icons right">search</i>Get Weather</button>
+                                <button type="submit" class="btn-large col s12 m4 l4 xl4 bg-iceberg-teal-grey lighten-4 right" id="cityInfoBtn"><i
+                                        class="medium material-icons right">search</i>Get Activities</button>    
+                            </div>           
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
             <div class="col-9">
                 <div class="card" style="width: 100%;" id="weatherContainer"></div>
                 <div id="forecastContainer"></div>
             </div>
 
-
-        </div>
+            <div class ="col s12 z-depth-4 bg-iceberg-grey darken-4 card" id = "results-container"></div>
         <div class="container">
             <div class="slider">
                 <ul class="slides">
@@ -136,8 +132,10 @@
     <script src="./assets/javascript/JavaScript.js"></script>
     <script src="./assets/javascript/Javascript2.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <!-- Weather Dashboard -->
+    <script src="./assets/javascript/Javascript2.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </body>
 
 </html>

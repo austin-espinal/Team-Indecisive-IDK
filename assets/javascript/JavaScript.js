@@ -1,10 +1,7 @@
 var runSearch = function () {
-    console.log("itworks");
-    // clearInfo();
+    clearInfo();
     var locationRequested = document.getElementById("cityInput").value;
-    var searchInfoArea = document.getElementById("search-city");
-    searchInfoArea.textContent = "City: " + locationRequested;
-
+    createResultDiv();
     // get data from API
     var requestUrl =
         "https://api.opentripmap.com/0.1/en/places/geoname?name=" +
@@ -46,16 +43,20 @@ var runSearch = function () {
                                 // get area where results are going to be displayed
                                 var results = document.getElementById("results");
                                 var categoryUl = document.createElement("ul");
+                                categoryUl.className = "float-left";
                                 results.appendChild(categoryUl);
-                                var listItemName = document.createElement("h5");
+                                var listItemName = document.createElement("h3");
                                 listItemName.textContent = data.name;
+                                listItemName.className = "iceburg-teal-text";
                                 categoryUl.appendChild(listItemName);
                                 var description = document.createElement("p");
+                                description.className = "gray-text";
                                 description.textContent = data.wikipedia_extracts.text;
                                 categoryUl.appendChild(description);
                                 console.log(description);
                                 var mapLink = document.createElement("a");
                                 mapLink.href = data.otm;
+                                mapLink.className = "white-text"
                                 mapLink.textContent =
                                     "Click here for more details and map directions";
                                 categoryUl.appendChild(mapLink);
@@ -67,12 +68,25 @@ var runSearch = function () {
                     console.log(xid);
                 });
         });
+
 };
 // clears the search bar after searching and deletes information for prior search
 var clearInfo = function () {
-    var clearSearchInfo = document.getElementById("search-city");
-    var clearResults = document.getElementById("results");
-    clearSearchInfo.textContent = "";
-    clearResults.textContent = "";
+    var clearSearchResults = document.getElementById("results-container");
+    clearSearchResults.textContent = "";
 };
+
+var createResultDiv = function () {
+    var resultsContainer = document.getElementById("results-container");
+    var cardCartonDiv = document.createElement("div");
+    cardCartonDiv.className = "card-content";
+    cardCartonDiv.id = "results";
+    resultsContainer.appendChild(cardCartonDiv);
+    var results = document.getElementById("results");
+    var resultsHeader = document.createElement("span");
+    resultsHeader.className = "card-title center-align white-text"
+    resultsHeader.textContent = "Results"
+    results.appendChild(resultsHeader);
+}
+
 $("#cityInfoBtn").on("click", runSearch);
