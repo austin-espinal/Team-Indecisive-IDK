@@ -56,7 +56,9 @@ var runSearch = function () {
                 console.log(description);
                 var mapLink = document.createElement("a");
                 mapLink.href = data.otm;
-                mapLink.className = "white-text"
+                mapLink.className = "white-text";
+                mapLink.target = "_blank";
+                mapLink.rel = "noopner noreferrer";
                 mapLink.textContent =
                   "Click here for more details and map directions";
                 categoryUl.appendChild(mapLink);
