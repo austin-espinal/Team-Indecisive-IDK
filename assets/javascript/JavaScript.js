@@ -1,4 +1,7 @@
 var runSearch = function () {
+  var scaleSlider = document.getElementById("scale-demo");
+  scaleSlider.classList.add('scale-out');
+
     clearInfo();
     var locationRequested = document.getElementById("cityInput").value;
     createResultDiv();
@@ -47,7 +50,7 @@ var runSearch = function () {
                   results.appendChild(categoryUl);
                   var listItemName = document.createElement("h3");
                   listItemName.textContent = data.name;
-                  listItemName.className = "iceburg-teal-text";
+                  listItemName.className = "iceberg-teal-text";
                   categoryUl.appendChild(listItemName);
                   var description = document.createElement("p");
                   description.className = "gray-text";

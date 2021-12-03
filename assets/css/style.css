@@ -29,7 +29,9 @@ button {
 .slider .slides li .caption {
     top: 60%;
 }
-
+#scale-demo h3 {
+    font-size: 25px;
+}
 .text-input:not(:focus) {
 	border-bottom-color: rgba(41, 94, 115, 0.12) !important;}
 

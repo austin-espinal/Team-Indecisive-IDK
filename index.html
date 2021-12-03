@@ -12,8 +12,8 @@
     <!--added material by Tim Nguyen if wanting to use side menu idea-->
     <link rel="stylesheet" href="./assets/css/material.css" />
     <!--custom style sheet-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
     <link rel="stylesheet" href="./assets/css/style.css" />
 
@@ -60,13 +60,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9">
-                <div class="card" style="width: 100%;" id="weatherContainer"></div>
-                <div id="forecastContainer"></div>
+            <div >
+                <div class="card" id="weatherContainer"></div>
+                <div id="forecastContainer" class="row"></div>
             </div>
 
             <div class ="col s12 z-depth-4 bg-iceberg-grey darken-4 card" id = "results-container"></div>
-        <div class="container">
+        </div>
+        <div id="scale-demo" class="container scale-transition">
             <div class="slider">
                 <ul class="slides">
                     <li class="">
@@ -112,8 +113,6 @@
                 </ul>
             </div>
         </div>
-        </div>
-        </div>
         <!--saved location side menu-->
         <ul id="slide-out" class="sidenav">
             <li id="second-side"><img class="circle" src="./assets/images/check-in2.jpg"></li>
@@ -130,9 +129,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--custom js-->
     <script src="./assets/javascript/JavaScript.js"></script>
-    <script src="./assets/javascript/Javascript2.js"></script>
-
-    <!-- Weather Dashboard -->
     <script src="./assets/javascript/Javascript2.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
