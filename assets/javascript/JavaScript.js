@@ -5,7 +5,7 @@ var runSearch = function () {
     clearInfo();
     var locationRequested = document.getElementById("cityInput").value;
     createResultDiv();
-    // get data from API
+    // get data from Opentrip API
     var requestUrl =
       "https://api.opentripmap.com/0.1/en/places/geoname?name=" +
       locationRequested +
