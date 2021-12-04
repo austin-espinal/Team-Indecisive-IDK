@@ -50,7 +50,7 @@ var runSearch = function () {
                   results.appendChild(categoryUl);
                   var listItemName = document.createElement("h3");
                   listItemName.textContent = data.name;
-                  listItemName.className = "iceberg-teal-text";
+                  listItemName.className = "white-text";
                   categoryUl.appendChild(listItemName);
                   var description = document.createElement("p");
                   description.className = "gray-text";

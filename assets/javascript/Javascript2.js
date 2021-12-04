@@ -22,7 +22,7 @@ function renderCities(){
     
     for (i=0; i<cityList.length; i++){
         var a = $("<a>");
-        a.addClass("list-group-item list-group-item-action list-group-item-primary city");
+        a.addClass("list-group-item list-group-item-action list-group-item-primary city row");
         a.attr("data-name", cityList[i]);
         a.text(cityList[i]);
         $("#cityList").prepend(a);
