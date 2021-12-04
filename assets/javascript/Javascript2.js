@@ -176,13 +176,13 @@ async function displayFiveDayForecast() {
       var forecastDiv = $("<div  id='fiveDayForecast'>");
       var forecastHeader = $("<h5 class='card-header border-secondary'>").text("5 Day Forecast");
       forecastDiv.append(forecastHeader);
-      var cardDeck = $("<div  class='card-deck center-align'>");
+      var cardDeck = $("<div  class='card-content center-align'>");
       forecastDiv.append(cardDeck);
       
       console.log(response);
       for (i=0; i<5;i++){
           var forecastCard = $("<div class='card'>");
-          var cardBody = $("<div class='card col s12 m4 l4 xl2'>");
+          var cardBody = $("<div class='card col s12 m3 l3 xl2'>");
           var date = new Date();
           var val=(date.getMonth()+1)+"/"+(date.getDate()+i+1)+"/"+date.getFullYear();
           var forecastDate = $("<h5 class='card-title'>").text(val);

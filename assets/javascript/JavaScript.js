@@ -46,7 +46,7 @@ var runSearch = function () {
                   // get area where results are going to be displayed
                   var results = document.getElementById("results");
                   var categoryUl = document.createElement("ul");
-                  categoryUl.className = "float-left";
+                  categoryUl.className = "bg-iceberg-grey darken-4";
                   results.appendChild(categoryUl);
                   var listItemName = document.createElement("h3");
                   listItemName.textContent = data.name;
