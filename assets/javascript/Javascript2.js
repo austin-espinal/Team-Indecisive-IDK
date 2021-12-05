@@ -214,4 +214,3 @@ function historyDisplayWeather(){
 }
 
 $(document).on("click", ".city", historyDisplayWeather);
-
