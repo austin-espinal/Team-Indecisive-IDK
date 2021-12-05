@@ -25,11 +25,22 @@ button {
     #banner-img2 img {
         height: 200px;
     }
+    #scale-demo h3 {
+        font-size: 20px;
+    }
 }
 .slider .slides li .caption {
     top: 60%;
 }
-
+#scale-demo h3 {
+    font-size: 25px;
+}
+.results ul {
+    margin: 40px;
+}
+.card {
+    margin: 0.5rem 1rem 0;
+}
 .text-input:not(:focus) {
 	border-bottom-color: rgba(41, 94, 115, 0.12) !important;}
 

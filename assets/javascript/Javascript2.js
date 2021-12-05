@@ -22,7 +22,7 @@ function renderCities(){
     
     for (i=0; i<cityList.length; i++){
         var a = $("<a>");
-        a.addClass("list-group-item list-group-item-action list-group-item-primary city");
+        a.addClass("list-group-item list-group-item-action list-group-item-primary city row");
         a.attr("data-name", cityList[i]);
         a.text(cityList[i]);
         $("#cityList").prepend(a);
@@ -104,7 +104,7 @@ async function displayWeather() {
       })
         console.log(response);
 
-        var currentWeatherDiv = $("<div class='card-body' id='currentWeather'>");
+        var currentWeatherDiv = $("<div class='card-content' id='currentWeather'>");
         var getCurrentCity = response.name;
         var date = new Date();
         var val=(date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear();
@@ -113,7 +113,7 @@ async function displayWeather() {
 
 
         var displayCurrentWeatherIcon = $("<img src = http://openweathermap.org/img/wn/" + getCurrentWeatherIcon + "@2x.png />");
-        var currentCityEl = $("<h3 class = 'card-body'>").text(getCurrentCity+" ("+val+")");
+        var currentCityEl = $("<h3 class = 'card-title'>").text(getCurrentCity+" ("+val+")");
 
 
 
@@ -176,13 +176,13 @@ async function displayFiveDayForecast() {
       var forecastDiv = $("<div  id='fiveDayForecast'>");
       var forecastHeader = $("<h5 class='card-header border-secondary'>").text("5 Day Forecast");
       forecastDiv.append(forecastHeader);
-      var cardDeck = $("<div  class='card-deck'>");
+      var cardDeck = $("<div  class='card-content center-align'>");
       forecastDiv.append(cardDeck);
       
       console.log(response);
       for (i=0; i<5;i++){
-          var forecastCard = $("<div class='card mb-3 mt-3'>");
-          var cardBody = $("<div class='card-body'>");
+          var forecastCard = $("<div class='card'>");
+          var cardBody = $("<div class='card col s12 m3 l3 xl2'>");
           var date = new Date();
           var val=(date.getMonth()+1)+"/"+(date.getDate()+i+1)+"/"+date.getFullYear();
           var forecastDate = $("<h5 class='card-title'>").text(val);

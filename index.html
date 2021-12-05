@@ -12,8 +12,6 @@
     <!--added material by Tim Nguyen if wanting to use side menu idea-->
     <link rel="stylesheet" href="./assets/css/material.css" />
     <!--custom style sheet-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
     <link rel="stylesheet" href="./assets/css/style.css" />
 
 
@@ -59,49 +57,58 @@
                     </div>
                 </div>
             </div>
-            <div class="col-9">
-                <div class="card" style="width: 100%;" id="weatherContainer"></div>
-                  <div id="forecastContainer"></div>
+            <div >
+                <div class="card" id="weatherContainer"></div>
+                <div id="forecastContainer" class="row"></div>
             </div>
 
             <div class ="col s12 z-depth-4 bg-iceberg-grey darken-4 card" id = "results-container"></div>
-        <div class="container">
+        </div>
+        <div id="scale-demo" class="container scale-transition">
             <div class="slider">
                 <ul class="slides">
                     <li class="">
-                        <img class="responsive-img z-depth-3" src="./assets/images/things to do.jpg"> <!-- random image -->
+                        <img class="responsive-img z-depth-3" src="./assets/images/things to do.jpg">
+                        <!-- random image -->
                         <div class="caption right-align" id="cap1">
-                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Look for new things to do on your adventures!</h3>
+                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Look for new things to do
+                                on your adventures!</h3>
                         </div>
                     </li>
                     <li>
-                        <img class="responsive-img z-depth-3" src="./assets/images/white water rafting.jpg"> <!-- random image -->
+                        <img class="responsive-img z-depth-3" src="./assets/images/white water rafting.jpg">
+                        <!-- random image -->
                         <div class="caption right-align" id="cap2">
-                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Experience White Water Rafting in Hartford, TN</h3>
+                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Experience White Water
+                                Rafting in Hartford, TN</h3>
                         </div>
                     </li>
                     <li>
-                        <img class="responsive-img z-depth-3" src="./assets/images/Family-Friendly-Museums.jpg"> <!-- random image -->
+                        <img class="responsive-img z-depth-3" src="./assets/images/Family-Friendly-Museums.jpg">
+                        <!-- random image -->
                         <div class="caption right-align" id="cap3">
-                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3"">Visit the Museum of Science & Industry in Portland, OR </h3>
+                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Visit the Museum of Science
+                                & Industry in Portland, OR </h3>
                         </div>
                     </li>
                     <li>
-                        <img class="responsive-img z-depth-3" src="./assets/images/family fishing.jpg"> <!-- random image -->
+                        <img class="responsive-img z-depth-3" src="./assets/images/family fishing.jpg">
+                        <!-- random image -->
                         <div class="caption right-align" id="cap4">
-                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Take a Fishing Trip to Green River, Utah</h3>
+                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">Take a Fishing Trip to
+                                Green River, Utah</h3>
                         </div>
                     </li>
                     <li>
-                        <img class="responsive-img z-depth-3" src="./assets/images/pony_swim_2.jpg"> <!-- random image -->
+                        <img class="responsive-img z-depth-3" src="./assets/images/pony_swim_2.jpg">
+                        <!-- random image -->
                         <div class="caption right-align" id="cap5">
-                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">See the Pony Penning Day in Chincoteague, MD</h3>
+                            <h3 class="light black-text bg-iceberg-light-blue text-darken-3">See the Pony Penning Day in
+                                Chincoteague, MD</h3>
                         </div>
                     </li>
                 </ul>
             </div>
-            </div>
-        </div>
         </div>
         <!--saved location side menu-->
         <ul id="slide-out" class="sidenav">
@@ -119,8 +126,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--custom js-->
     <script src="./assets/javascript/JavaScript.js"></script>
-
-    <!-- Weather Dashboard -->
     <script src="./assets/javascript/Javascript2.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>

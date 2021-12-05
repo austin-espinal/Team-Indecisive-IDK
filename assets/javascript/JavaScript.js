@@ -1,8 +1,11 @@
 var runSearch = function () {
+  var scaleSlider = document.getElementById("scale-demo");
+  scaleSlider.classList.add('scale-out');
+
     clearInfo();
     var locationRequested = document.getElementById("cityInput").value;
     createResultDiv();
-    // get data from API
+    // get data from Opentrip API
     var requestUrl =
       "https://api.opentripmap.com/0.1/en/places/geoname?name=" +
       locationRequested +
@@ -43,11 +46,11 @@ var runSearch = function () {
                   // get area where results are going to be displayed
                   var results = document.getElementById("results");
                   var categoryUl = document.createElement("ul");
-                  categoryUl.className = "float-left";
+                  categoryUl.className = "bg-iceberg-grey darken-4";
                   results.appendChild(categoryUl);
                   var listItemName = document.createElement("h3");
                   listItemName.textContent = data.name;
-                  listItemName.className = "iceburg-teal-text";
+                  listItemName.className = "white-text";
                   categoryUl.appendChild(listItemName);
                   var description = document.createElement("p");
                   description.className = "gray-text";
@@ -92,7 +95,3 @@ var runSearch = function () {
   }
   
   $("#cityInfoBtn").on("click", runSearch);
-  
-  
-  
-  
